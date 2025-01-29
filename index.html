@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Security Solutions Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .solution {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .citation {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hardware Security Solutions Comparison</h1>
+        
+        <div class="solution">
+            <h2>Trusted Platform Module (TPM)</h2>
+            <p>A TPM is a specialized cryptographic processor that provides a hardware-based approach to security. It implements a standardized architecture defined by the Trusted Computing Group (TCG) that ensures platform integrity and protects sensitive data through hardware-based mechanisms. The TPM creates and stores cryptographic keys that cannot be extracted, making it highly resistant to software-based attacks and malware.</p>
+            <h3>Applications/Devices:</h3>
+            <ul>
+                <li>Desktop and laptop computers with Windows BitLocker integration</li>
+                <li>Enterprise servers for secure boot and remote attestation</li>
+                <li>Network equipment requiring hardware-root-of-trust</li>
+                <li>Industrial IoT devices requiring trusted computing base</li>
+            </ul>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Hardware-based key generation and storage using RSA, ECC, and AES algorithms</li>
+                <li>True random number generation (TRNG) for cryptographic operations</li>
+                <li>Platform Configuration Registers (PCRs) for secure boot and runtime integrity verification</li>
+                <li>Remote attestation capabilities for proving platform trustworthiness</li>
+            </ul>
+            <p class="citation">Source: TCG TPM 2.0 Library Specification, Trusted Computing Group, 2019</p>
+        </div>
+
+        <div class="solution">
+            <h2>Hardware Security Module (HSM)</h2>
+            <p>HSMs are tamper-resistant hardware devices that provide the highest level of security for cryptographic operations. They are designed to meet stringent security certifications like FIPS 140-2 Level 3/4 and Common Criteria. HSMs utilize specialized hardware with features like tamper-detection circuits, encrypted memory, and self-destruction mechanisms if physical tampering is detected. They perform critical operations like key generation, digital signing, and encryption entirely within their secure boundary.</p>
+            <h3>Applications/Devices:</h3>
+            <ul>
+                <li>Banking systems for PIN processing and card issuance</li>
+                <li>Payment processing systems requiring PCI HSM compliance</li>
+                <li>Certificate Authorities for PKI root key protection</li>
+                <li>Cloud service providers offering dedicated HSM services</li>
+            </ul>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>High-performance cryptographic operations (>10,000 RSA operations/second)</li>
+                <li>Multi-layer physical security with tamper-evident seals</li>
+                <li>FIPS 140-2 Level 3/4 certification for highest security assurance</li>
+                <li>Secure key backup with M-of-N control and hardware-based authentication</li>
+            </ul>
+            <p class="citation">Source: NIST FIPS 140-2 Security Requirements for Cryptographic Modules, 2019</p>
+        </div>
+
+        <div class="solution">
+            <h2>Key Management System (KMS)</h2>
+            <p>A KMS provides a comprehensive framework for managing the full lifecycle of cryptographic keys in an organization. Modern KMS implementations often combine software management interfaces with hardware security backends (like HSMs) to ensure both security and usability. They implement key rotation policies, access controls, and audit logging while maintaining compliance with standards like NIST SP 800-57.</p>
+            <h3>Applications/Devices:</h3>
+            <ul>
+                <li>Enterprise IT infrastructure requiring centralized key management</li>
+                <li>Cloud platforms offering encryption-as-a-service</li>
+                <li>Data centers managing thousands of encryption keys</li>
+                <li>Cryptocurrency exchanges requiring secure key storage</li>
+            </ul>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Automated key generation with strong entropy sources</li>
+                <li>Configurable key rotation policies and secure key deletion</li>
+                <li>Role-based access control with detailed audit logging</li>
+                <li>API integration supporting KMIP protocol</li>
+            </ul>
+            <p class="citation">Source: NIST SP 800-57 Recommendation for Key Management, 2020</p>
+        </div>
+
+        <div class="solution">
+            <h2>Secure Enclave</h2>
+            <p>A Secure Enclave is an isolated security coprocessor that provides a trusted execution environment (TEE) within a main processor. It runs its own secure operating system, separate from the main OS, and includes encrypted memory and secure boot processes. The Secure Enclave maintains a secure boundary even if the main operating system is compromised, protecting sensitive operations and data.</p>
+            <h3>Applications/Devices:</h3>
+            <ul>
+                <li>Apple devices using T2 or M1/M2 chips with Secure Enclave</li>
+                <li>Android devices with ARM TrustZone technology</li>
+                <li>Smart cards with secure elements</li>
+                <li>Point-of-sale terminals with EMV certification</li>
+            </ul>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Hardware-isolated biometric processing and storage</li>
+                <li>Secure boot chain with hardware-verified signatures</li>
+                <li>Per-file encryption with unique keys</li>
+                <li>Secure key generation with hardware entropy</li>
+            </ul>
+            <p class="citation">Source: Apple Platform Security Guide, 2023 & ARM TrustZone Technology Overview, 2022</p>
+        </div>
+
+        <div class="footer">
+            <p>Created by Alex Wang</p>
+            <p>Made for Cybersecurity assignment website for Kup.</p>
+        </div>
+    </div>
+</body>
+</html>
