@@ -5,54 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hardware Security Solutions Comparison</title>
     <style>
+        :root {
+            --cyber-blue: #00ff9d;
+            --cyber-dark: #1a1a1a;
+            --cyber-glow: 0 0 10px var(--cyber-blue);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: var(--cyber-dark);
+            color: #fff;
+            background-image: 
+                linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzAwZmY5ZCIvPjwvc3ZnPg==');
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--cyber-blue);
+            box-shadow: var(--cyber-glow);
+            animation: pulse 4s infinite;
         }
+
         h1, h2 {
-            color: #333;
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: var(--cyber-glow);
         }
+
         .solution {
             margin-bottom: 30px;
             padding: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--cyber-blue);
             border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
+
+        .solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background-color: var(--cyber-blue);
+            animation: scan 3s linear infinite;
+        }
+
+        .solution:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--cyber-glow);
+        }
+
         .footer {
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid var(--cyber-blue);
+            animation: flicker 5s infinite;
         }
+
         .citation {
             font-size: 0.9em;
-            color: #666;
+            color: #888;
             margin-top: 10px;
             font-style: italic;
         }
+
         .citation a {
-            color: #666;
-            text-decoration: underline;
+            color: var(--cyber-blue);
+            text-decoration: none;
+            transition: text-shadow 0.3s;
+        }
+
+        .citation a:hover {
+            text-shadow: var(--cyber-glow);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px var(--cyber-blue); }
+            50% { box-shadow: 0 0 20px var(--cyber-blue); }
+            100% { box-shadow: 0 0 10px var(--cyber-blue); }
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            95% { opacity: 1; }
+            96% { opacity: 0.8; }
+            97% { opacity: 1; }
+            98% { opacity: 0.5; }
+            99% { opacity: 1; }
+        }
+
+        /* Add typewriter effect for paragraphs */
+        p {
+            overflow: hidden;
+            border-right: 2px solid var(--cyber-blue);
+            white-space: normal;
+            animation: typing 0.5s steps(40, end),
+                       blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { max-height: 0; }
+            to { max-height: 1000px; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--cyber-blue); }
+        }
+
+        /* Style lists with cyber bullets */
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li::before {
+            content: ">";
+            color: var(--cyber-blue);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Add text scramble effect */
+        .scramble {
+            display: inline-block;
+        }
+
+        @keyframes scramble {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .scramble span {
+            display: inline-block;
+            animation: scramble 100ms infinite;
+        }
+
+        .scramble span:nth-child(2n) {
+            animation-delay: 50ms;
+        }
+
+        .scramble span:nth-child(3n) {
+            animation-delay: 75ms;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hardware Security Solutions Comparison</h1>
+        <h1 class="scramble">Hardware Security Solutions Comparison</h1>
         
         <div class="solution">
-            <h2>Trusted Platform Module (TPM)</h2>
+            <h2 class="scramble">Trusted Platform Module (TPM)</h2>
             <p>A TPM is a specialized cryptographic processor that provides a hardware-based approach to security. It implements a standardized architecture defined by the Trusted Computing Group (TCG) that ensures platform integrity and protects sensitive data through hardware-based mechanisms. The TPM creates and stores cryptographic keys that cannot be extracted, making it highly resistant to software-based attacks and malware.</p>
             <h3>Applications/Devices:</h3>
             <ul>
@@ -72,7 +195,7 @@
         </div>
 
         <div class="solution">
-            <h2>Hardware Security Module (HSM)</h2>
+            <h2 class="scramble">Hardware Security Module (HSM)</h2>
             <p>HSMs are tamper-resistant hardware devices that provide the highest level of security for cryptographic operations. They are designed to meet stringent security certifications like FIPS 140-2 Level 3/4 and Common Criteria. HSMs utilize specialized hardware with features like tamper-detection circuits, encrypted memory, and self-destruction mechanisms if physical tampering is detected. They perform critical operations like key generation, digital signing, and encryption entirely within their secure boundary.</p>
             <h3>Applications/Devices:</h3>
             <ul>
@@ -92,7 +215,7 @@
         </div>
 
         <div class="solution">
-            <h2>Key Management System (KMS)</h2>
+            <h2 class="scramble">Key Management System (KMS)</h2>
             <p>A KMS provides a comprehensive framework for managing the full lifecycle of cryptographic keys in an organization. Modern KMS implementations often combine software management interfaces with hardware security backends (like HSMs) to ensure both security and usability. They implement key rotation policies, access controls, and audit logging while maintaining compliance with standards like NIST SP 800-57.</p>
             <h3>Applications/Devices:</h3>
             <ul>
@@ -112,7 +235,7 @@
         </div>
 
         <div class="solution">
-            <h2>Secure Enclave</h2>
+            <h2 class="scramble">Secure Enclave</h2>
             <p>A Secure Enclave is an isolated security coprocessor that provides a trusted execution environment (TEE) within a main processor. It runs its own secure operating system, separate from the main OS, and includes encrypted memory and secure boot processes. The Secure Enclave maintains a secure boundary even if the main operating system is compromised, protecting sensitive operations and data.</p>
             <h3>Applications/Devices:</h3>
             <ul>
@@ -136,5 +259,32 @@
             <p>Made for Cybersecurity assignment website for Kup.</p>
         </div>
     </div>
+
+    <script>
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+        const scrambleElements = document.querySelectorAll('.scramble');
+
+        scrambleElements.forEach(element => {
+            const originalText = element.textContent;
+            const textArray = originalText.split('');
+            element.textContent = '';
+            
+            textArray.forEach(char => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                element.appendChild(span);
+                
+                setInterval(() => {
+                    if (Math.random() < 0.1) {
+                        const originalChar = span.textContent;
+                        span.textContent = characters[Math.floor(Math.random() * characters.length)];
+                        setTimeout(() => {
+                            span.textContent = originalChar;
+                        }, 100);
+                    }
+                }, 1000);
+            });
+        });
+    </script>
 </body>
 </html>
