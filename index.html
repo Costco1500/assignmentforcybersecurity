@@ -269,20 +269,39 @@
             const textArray = originalText.split('');
             element.textContent = '';
             
-            textArray.forEach(char => {
+            textArray.forEach((char, index) => {
                 const span = document.createElement('span');
                 span.textContent = char;
                 element.appendChild(span);
                 
-                setInterval(() => {
-                    if (Math.random() < 0.1) {
-                        const originalChar = span.textContent;
+                // Initial scramble effect on page load
+                let iterations = 0;
+                const maxIterations = 10 + Math.random() * 10;
+                const interval = setInterval(() => {
+                    if (iterations >= maxIterations) {
+                        span.textContent = char;
+                        clearInterval(interval);
+                    } else {
                         span.textContent = characters[Math.floor(Math.random() * characters.length)];
-                        setTimeout(() => {
-                            span.textContent = originalChar;
-                        }, 100);
+                        iterations++;
                     }
-                }, 1000);
+                }, 50);
+
+                // Periodic scramble effect
+                setInterval(() => {
+                    if (Math.random() < 0.02) { // Reduced frequency
+                        let iterations = 0;
+                        const scrambleInterval = setInterval(() => {
+                            if (iterations >= 5) { // Fewer iterations for periodic effect
+                                span.textContent = char;
+                                clearInterval(scrambleInterval);
+                            } else {
+                                span.textContent = characters[Math.floor(Math.random() * characters.length)];
+                                iterations++;
+                            }
+                        }, 50);
+                    }
+                }, 2000);
             });
         });
     </script>
